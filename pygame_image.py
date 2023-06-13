@@ -9,13 +9,15 @@ def main():
     bg_img = pg.image.load("ex01/fig/pg_bg.jpg")
     three_img = pg.image.load("ex01/fig/3.png")
     three_img = pg.transform.flip(three_img , True , False)
-    tmr = 0
+    tenthree_img = pg.transform.rotate(three_img , 10)
+    tmr_img = 0
+    tori_list=[three_img,tenthree_img]
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [0, 0])
-        screen.blit(three_img, [0, 0])
+        screen.blit(tori_list, [0, 0])
         pg.display.update()
         tmr += 1        
         clock.tick(10)
