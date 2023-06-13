@@ -9,8 +9,18 @@ def main():
     bg_img = pg.image.load("ex01/fig/pg_bg.jpg")
     three_img = pg.image.load("ex01/fig/3.png")
     three_img = pg.transform.flip(three_img , True , False)
+    onethree_img = pg.transform.rotate(three_img , 1)
+    twothree_img = pg.transform.rotate(three_img , 2)
+    santhree_img = pg.transform.rotate(three_img , 3)
+    yonthree_img = pg.transform.rotate(three_img , 4)
+    fivethree_img = pg.transform.rotate(three_img , 5)
+    sixthree_img = pg.transform.rotate(three_img , 6)
+    seventhree_img = pg.transform.rotate(three_img , 7)
+    eightthree_img = pg.transform.rotate(three_img , 8)
+    ninethree_img = pg.transform.rotate(three_img , 9)
     tenthree_img = pg.transform.rotate(three_img , 10)
-    tori_list=[three_img, tenthree_img]
+
+    tori_list=[three_img,twothree_img,santhree_img,yonthree_img,fivethree_img,sixthree_img,seventhree_img,eightthree_img,ninethree_img,tenthree_img,ninethree_img,eightthree_img,seventhree_img,sixthree_img,fivethree_img,yonthree_img,santhree_img,twothree_img,onethree_img,three_img]
     tmr_img = 0
     tmr2_img=0
     while True:
@@ -18,15 +28,14 @@ def main():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [0+tmr2_img, 0])
-        screen.blit(tori_list[tmr_img%2], [300, 200])
+        screen.blit(bg_img%1600, [0+tmr2_img, 0])
+        screen.blit(tori_list[tmr_img%20], [300, 200])
         pg.display.update()
-        tmr_img += 15
+        tmr_img += 1
         tmr2_img -=10
-        if tmr2_img>1599:
-            continue    
         if tmr2_img <= 1599:
             screen.blit(bg_img,[0,0])
-            clock.tick(10)
+        clock.tick(30)
 
 
 if __name__ == "__main__":
