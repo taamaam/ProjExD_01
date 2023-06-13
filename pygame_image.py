@@ -7,6 +7,7 @@ def main():
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
     bg_img = pg.image.load("ex01/fig/pg_bg.jpg")
+    abg_img = pg.transform.flip(bg_img,True,False)
     three_img = pg.image.load("ex01/fig/3.png")
     three_img = pg.transform.flip(three_img , True , False)
     onethree_img = pg.transform.rotate(three_img , 1)
@@ -26,16 +27,16 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
+        tmr_img -= 1
 
-        screen.blit(bg_img, [0+tmr2_img, 0])
-        screen.blit(bg_img%1600, [0+tmr2_img, 0])
+        if tmr_img ==3200:
+            tmr2_img=0
+        screen.blit(bg_img, [tmr_img, 0])
+        screen.blit(abg_img, [1600+tmr_img, 0])
+        screen.blit(bg_img, [3200+tmr_img, 0])
         screen.blit(tori_list[tmr_img%20], [300, 200])
         pg.display.update()
-        tmr_img += 1
-        tmr2_img -=10
-        if tmr2_img <= 1599:
-            screen.blit(bg_img,[0,0])
-        clock.tick(30)
+        clock.tick(300)
 
 
 if __name__ == "__main__":
